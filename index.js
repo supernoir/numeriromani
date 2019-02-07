@@ -10,19 +10,20 @@ const toRomanNumeral = (str) => {
 		resultArr = groupedArr.map((numeral, index) => {
 			switch(index){
 				case 0:
-					return getSingleDigitNumeral(numeral[index]);
+					return getOnesAsNumeral(numeral[index]);
 				case 1:
-					// Get Tens Digit...
-					return getSingleDigitNumeral(numeral[index]);
+					return getTensAsNumeral(numeral[index]);
 				case 2:
-					// Get Hundreds Digit
-					return getSingleDigitNumeral(numeral[index]);
+					return getHundredsAsNumeral(numeral[index]);
 				case 3:
-					// Get Thousands Digit
-					return getSingleDigitNumeral(numeral[index]);
+					return getThousandsAsNumeral(numeral[index]);
 			}
 		});
-		resultStr = resultArr.toString();
+
+		// Reverse Array again and join to String
+		let convertedArr = resultArr.reverse().join();
+		// Replace commas
+		resultStr = convertedArr.replace(/,/gi,'');
 		return resultStr;
 
 	} catch (err) {
@@ -38,7 +39,7 @@ const groupByDecimalPoint = (arr) => {
 	return result;
 };
 
-const getSingleDigitNumeral = (num) => {
+const getOnesAsNumeral = (num) => {
 	switch(num){
 		case '0':
 			return '';
@@ -63,7 +64,85 @@ const getSingleDigitNumeral = (num) => {
 	}
 };
 
+const getTensAsNumeral = (num) => {
+	switch(num){
+		case '0':
+			return '';
+		case '1':
+			return 'X';
+		case '2':
+			return 'XX';
+		case '3':
+			return 'XXX';
+		case '4':
+			return 'XL';
+		case '5':
+			return 'L';
+		case '6':
+			return 'LX';
+		case '7':
+			return 'LXX';
+		case '8':
+			return 'LXXX';
+		case '9':
+			return 'XC';
+	}
+};
+
+const getHundredsAsNumeral = (num) => {
+	switch(num){
+		case '0':
+			return '';
+		case '1':
+			return 'C';
+		case '2':
+			return 'CC';
+		case '3':
+			return 'CCC';
+		case '4':
+			return 'CD';
+		case '5':
+			return 'D';
+		case '6':
+			return 'DC';
+		case '7':
+			return 'DCC';
+		case '8':
+			return 'DCCC';
+		case '9':
+			return 'CM';
+	}
+};
+const getThousandsAsNumeral = (num) => {
+	switch(num){
+		case '0':
+			return '';
+		case '1':
+			return 'M';
+		case '2':
+			return 'MM';
+		case '3':
+			return 'MMM';
+		case '4':
+			return 'MMMM';
+		case '5':
+			return 'ↁ';
+		case '6':
+			return 'ↁM';
+		case '7':
+			return 'ↁMM';
+		case '8':
+			return 'ↁMM';
+		case '9':
+			return 'Mↂ';
+	}
+};
+
 module.exports = {
 	toRomanNumeral,
-	groupByDecimalPoint
+	groupByDecimalPoint,
+	getOnesAsNumeral,
+	getTensAsNumeral,
+	getHundredsAsNumeral,
+	getThousandsAsNumeral,
 };
