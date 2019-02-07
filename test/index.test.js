@@ -39,12 +39,34 @@ describe('Numeri Romani', () => {
 
 		it('should return the correct Roman Numeral', () => {
 			expect(mockNum_3).to.equal(converter.toRomanNumeral('3'));
+			expect(mockNum_3).to.equal('III');
+
 			expect(mockNum_4).to.equal(converter.toRomanNumeral('4'));
+			expect(mockNum_4).to.equal('IV');
+
 			expect(mockNum_5).to.equal(converter.toRomanNumeral('5'));
+			expect(mockNum_5).to.equal('V');
+
+			expect(mockNum_6).to.equal(converter.toRomanNumeral('6'));
+			expect(mockNum_6).to.equal('VI');
+
+			expect(mockNum_10).to.equal(converter.toRomanNumeral('10'));
+			expect(mockNum_10).to.equal('X');
+
+			expect(mockNum_20).to.equal(converter.toRomanNumeral('20'));
+			expect(mockNum_20).to.equal('XX');
+
+			expect(mockNum_100).to.equal(converter.toRomanNumeral('100'));
+			expect(mockNum_100).to.equal('C');
+
 			expect(mockNum_2018).to.equal(converter.toRomanNumeral('2018'));
-			// Test for 3999 doesn't fail, but is still an invalid Roman Numeral
-			// TODO: Implement handling of "edge cases"
+			expect(mockNum_2018).to.equal('MMXVIII');
+
+			expect(mockNum_2019).to.equal(converter.toRomanNumeral('2019'));
+			expect(mockNum_2019).to.equal('MMXIX');
+
 			expect(mockNum_3999).to.equal(converter.toRomanNumeral('3999'));
+			expect(mockNum_3999).to.equal('MMMCMXCIX');
 		});
 
 	});

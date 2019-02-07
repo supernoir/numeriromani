@@ -1,12 +1,31 @@
+
+/**
+ * Numeri Romani - toRomanNumeral
+ * @version v.0.0.1
+ * @description Converts a given string of numbers to a string of Roman Numerals
+ * @param {String} str
+ * @returns {String} resultStr
+ * @author Conny Kawohl <kawohl@supernoir.io>
+ */
+
 const toRomanNumeral = (str) => {
 	try {
 		let resultArr = [];
 		let resultStr = '';
 
-		let strArr = str.split('');
+		// Throws error if str length exceeds 4 digits
+		if(str.length > 4){
+			throw new Error('Cannot convert string with more than four digits (< 9999)');
+		}
+
+		// Enfore String type, split characters into Array
+		let strArr = str.toString().split('');
+		// Reverse Array for parsing digits from Ones to Thousands
 		let reversedArr = strArr.reverse();
+		// group numerals by location in digit
 		let groupedArr = groupByDecimalPoint(reversedArr);
 
+		// Iterate over Object of grouped numerals
 		resultArr = groupedArr.map((numeral, index) => {
 			switch(index){
 				case 0:
@@ -27,7 +46,11 @@ const toRomanNumeral = (str) => {
 		return resultStr;
 
 	} catch (err) {
-		throw (`Couldn't convert ${str} into numeral`);
+		if (err !== void 0){
+			throw err;
+		} else {
+			throw (`Couldn't convert ${str} into numeral`);
+		}
 	}
 };
 
@@ -60,7 +83,7 @@ const getOnesAsNumeral = (num) => {
 		case '8':
 			return 'VIII';
 		case '9':
-			return 'VIIII';
+			return 'IX';
 	}
 };
 
@@ -140,9 +163,5 @@ const getThousandsAsNumeral = (num) => {
 
 module.exports = {
 	toRomanNumeral,
-	groupByDecimalPoint,
-	getOnesAsNumeral,
-	getTensAsNumeral,
-	getHundredsAsNumeral,
-	getThousandsAsNumeral,
+	groupByDecimalPoint
 };
