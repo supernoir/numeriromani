@@ -1,22 +1,11 @@
 const toRomanNumeral = (str) => {
 	try {
-		let strArr = str.split('');
-		//let numArr = strArr.map(Number);
 		let resultArr = [];
 		let resultStr = '';
+
+		let strArr = str.split('');
 		let reversedArr = strArr.reverse();
 		let groupedArr = groupByDecimalPoint(reversedArr);
-		let	arrKeys = Object.keys(groupedArr);
-		/* 	resultArr = groupedArr.map((numeral,index) => {
-			switch(arrKeys){
-				case 0:
-					// Single Digit
-					getSingleDigitNumeral(numeral[index]);
-					break;
-				default:
-					break;
-			}
-    }); */
 
 		resultArr = groupedArr.map((numeral, index) => {
 			switch(index){
