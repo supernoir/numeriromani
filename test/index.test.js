@@ -6,7 +6,9 @@
 */
 
 const expect = require('chai').expect;
-const converter = require('../index');
+const NumeriRomani = require('../index');
+
+let converter = new NumeriRomani();
 
 let mockNumbers = [
 	'2018',
