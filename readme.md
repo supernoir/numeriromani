@@ -9,7 +9,7 @@
   - `const convert = require('numeri-romani')`
 - Use the module to convert a string of Numbers (e.g. a given year)
   - `let currentYear = '2019';`
-  - `console.log(convert.toRomanNumeral(currentYear));`
+  - `console.log(converter.generate(currentYear));`
 - Run your code to see the result
   - `$ => MMXIX`
 

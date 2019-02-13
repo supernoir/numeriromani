@@ -1,27 +1,27 @@
 
 /**
- * Numeri Romani - toRomanNumeral
+ * Numeri Romani - generate
  * @version v.0.0.1
- * @description Converts a given string of numbers to a string of Roman Numerals
- * @param {String} str
+ * @description Converts a given number to a string of Roman Numerals
+ * @param {String} num
  * @returns {String} resultStr
  * @author Conny Kawohl <kawohl@supernoir.io>
  */
 
 class NumeriRomani {
 
-	toRomanNumeral(str) {
+	generate(num) {
 		try {
 			let resultArr = [];
 			let resultStr = '';
 
-			// Throws error if str length exceeds 4 digits
-			if(str.length > 4){
+			// Throws error if num length exceeds 4 digits
+			if(num.length > 4){
 				throw new Error('Cannot convert string with more than four digits (< 9999)');
 			}
 
 			// Enfore String type, split characters into Array
-			let strArr = str.toString().split('');
+			let strArr = num.toString().split('');
 			// Reverse Array for parsing digits from Ones to Thousands
 			let reversedArr = strArr.reverse();
 			// group numerals by location in digit
@@ -51,7 +51,7 @@ class NumeriRomani {
 			if (err !== void 0){
 				throw err;
 			} else {
-				throw (`Couldn't convert ${str} into numeral`);
+				throw (`Couldn't convert ${num} into numeral`);
 			}
 		}
 	};
